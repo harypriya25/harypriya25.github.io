@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Techno Bite — Food Industry Expert Network</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0A1F44;
+    --navy2:   #112259;
+    --blue:    #1A56DB;
+    --blue2:   #2563EB;
+    --sky:     #3B82F6;
+    --skylt:   #EFF6FF;
+    --skylt2:  #DBEAFE;
+    --white:   #FFFFFF;
+    --offwhite:#F8FAFF;
+    --gray:    #64748B;
+    --gray2:   #94A3B8;
+    --border:  rgba(10,31,68,0.10);
+    --bordlt:  rgba(59,130,246,0.15);
+    --condensed: 'Barlow Condensed', sans-serif;
+    --body:    'Nunito Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 12px rgba(10,31,68,0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    height: 68px; padding: 0 2.5rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .logo {
+    font-family: var(--condensed);
+    font-size: 26px; font-weight: 900;
+    letter-spacing: 1px; color: var(--navy);
+    text-decoration: none;
+  }
+  .logo span {
+    background: var(--blue);
+    color: var(--white);
+    padding: 1px 8px 1px 6px;
+    margin-left: 2px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 600;
+    color: var(--gray); text-decoration: none;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+
+  .btn {
+    font-family: var(--condensed);
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    padding: 10px 24px;
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid rgba(26,86,219,0.25);
+    color: var(--blue);
+    clip-path: none; padding: 9px 22px;
+  }
+  .btn-ghost:hover { border-color: var(--blue); background: var(--skylt); }
+  .btn-primary { background: var(--blue); color: var(--white); }
+  .btn-primary:hover { background: var(--navy2); transform: translateY(-1px); }
+  .btn-white { background: var(--white); color: var(--navy); }
+  .btn-white:hover { background: var(--skylt); }
+  .btn-lg { font-size: 17px; padding: 14px 34px; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--navy);
+    padding: 5rem 0;
+  }
+  /* diagonal white cut */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: var(--white);
+    clip-path: polygon(0 100%, 100% 0%, 100% 100%);
+    z-index: 1;
+  }
+  /* subtle grid */
+  .hero-grid-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
+    background-size: 52px 52px;
+  }
+  /* circle accent */
+  .hero-circle {
+    position: absolute; top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    border: 1px solid rgba(59,130,246,0.12);
+    z-index: 0;
+  }
+  .hero-circle2 {
+    position: absolute; top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(26,86,219,0.08);
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 5rem; align-items: center;
+    max-width: 1200px; margin: 0 auto; padding: 0 2.5rem;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--condensed);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--sky); margin-bottom: 1.5rem;
+  }
+  .eyebrow-line { width: 36px; height: 2px; background: var(--sky); }
+
+  .hero h1 {
+    font-family: var(--condensed);
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.01em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 1.75rem;
+  }
+  .hero h1 .line-accent { color: var(--sky); display: block; }
+  .hero h1 .line-outline {
+    -webkit-text-stroke: 2px rgba(255,255,255,0.2);
+    color: transparent; display: block;
+  }
+
+  .hero-desc {
+    font-size: 16px; color: rgba(255,255,255,0.65);
+    line-height: 1.8; max-width: 480px; margin-bottom: 2.5rem;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+  .hero-metrics { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .metric { border-left: 3px solid var(--sky); padding-left: 1rem; }
+  .metric-num {
+    font-family: var(--condensed);
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--white); line-height: 1;
+  }
+  .metric-num span { color: var(--sky); }
+  .metric-label { font-size: 12px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  /* HERO PANEL */
+  .hero-panel {
+    background: var(--white);
+    border: 1px solid var(--bordlt);
+    box-shadow: 0 24px 60px rgba(10,31,68,0.25);
+    position: relative; overflow: hidden;
+  }
+  .hero-panel::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--sky));
+  }
+  .panel-header {
+    background: var(--offwhite);
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .panel-title {
+    font-family: var(--condensed);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
+  }
+  .live-dot {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: #16A34A; font-weight: 700; letter-spacing: 0.08em;
+  }
+  .live-dot::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: #16A34A; animation: livepulse 1.8s infinite;
+  }
+  @keyframes livepulse {
+    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(22,163,74,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 5px rgba(22,163,74,0); }
+  }
+  .panel-body { padding: 1.75rem; }
+  .panel-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border); margin-bottom: 1.5rem;
+  }
+  .pstat { background: var(--offwhite); padding: 1.25rem; }
+  .pstat-num {
+    font-family: var(--condensed);
+    font-size: 2rem; font-weight: 900; color: var(--navy); line-height: 1;
+  }
+  .pstat-num .u { color: var(--blue); font-size: 1.2rem; }
+  .pstat-label { font-size: 11px; color: var(--gray2); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; }
+  .niches-label {
+    font-size: 11px; color: var(--gray2); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 700;
+  }
+  .niches { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .niche-tag {
+    font-size: 12px; font-weight: 600; padding: 5px 12px;
+    background: var(--skylt); border: 1px solid var(--skylt2);
+    color: var(--blue);
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    letter-spacing: 0.03em;
+  }
+  .niche-tag.dark {
+    background: var(--skylt2); border-color: rgba(59,130,246,0.3); color: var(--navy2);
+  }
+  .panel-cta-row {
+    background: linear-gradient(135deg, var(--navy), var(--blue2));
+    padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .pcta-text {
+    font-family: var(--condensed); font-size: 16px; font-weight: 800;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .pcta-sub { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 600; }
+  .pcta-btn {
+    font-family: var(--condensed); font-size: 13px; font-weight: 800;
+    background: var(--white); color: var(--navy);
+    border: none; padding: 9px 20px; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    transition: background 0.2s;
+  }
+  .pcta-btn:hover { background: var(--skylt); }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--offwhite);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2.5rem;
+  }
+  .strip-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 2.5rem;
+  }
+  .strip-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--gray2); text-transform: uppercase; letter-spacing: 0.12em;
+    white-space: nowrap; flex-shrink: 0;
+    border-right: 1px solid var(--border); padding-right: 2.5rem;
+  }
+  .strip-logos { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+  .strip-logo {
+    font-family: var(--condensed); font-size: 16px; font-weight: 700;
+    color: rgba(100,116,139,0.4); letter-spacing: 0.06em; text-transform: uppercase;
+    white-space: nowrap; transition: color 0.2s;
+  }
+  .strip-logo:hover { color: var(--blue); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 6rem 0; }
+  .section-bg { background: var(--offwhite); }
+  .section-navy { background: var(--navy); }
+
+  .section-head { margin-bottom: 3.5rem; }
+  .section-eye {
+    font-family: var(--condensed); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--blue); display: flex; align-items: center; gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+  .section-eye::before { content: ''; width: 28px; height: 2px; background: var(--blue); }
+  .section-eye.light { color: var(--sky); }
+  .section-eye.light::before { background: var(--sky); }
+
+  .section-title {
+    font-family: var(--condensed); font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 900; text-transform: uppercase;
+    line-height: 1; letter-spacing: -0.01em; color: var(--navy);
+  }
+  .section-title.light { color: var(--white); }
+  .section-sub {
+    font-size: 15px; color: var(--gray); line-height: 1.75;
+    margin-top: 1rem; max-width: 540px;
+  }
+  .section-sub.light { color: rgba(255,255,255,0.55); }
+
+  /* ── PROCESS ── */
+  .process-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+  }
+  .process-step {
+    background: var(--offwhite); padding: 2.5rem 2rem;
+    position: relative; transition: background 0.25s;
+  }
+  .process-step:hover { background: var(--skylt); }
+  .step-arrow {
+    position: absolute; top: 50%; right: -1px;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 16px solid var(--blue);
+    z-index: 2;
+  }
+  .process-step:last-child .step-arrow { display: none; }
+  .step-num {
+    font-family: var(--condensed); font-size: 5rem; font-weight: 900;
+    color: rgba(26,86,219,0.07); line-height: 1; margin-bottom: 0.5rem;
+    position: absolute; top: 1rem; right: 1.5rem;
+  }
+  .step-icon { font-size: 28px; margin-bottom: 1rem; }
+  .step-title {
+    font-family: var(--condensed); font-size: 18px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .step-body { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+  /* ── EXPERTISE ── */
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .exp-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 2rem 2rem 2.5rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .exp-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--sky));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .exp-card:hover {
+    border-color: var(--bordlt);
+    box-shadow: 0 8px 32px rgba(26,86,219,0.1);
+    transform: translateY(-4px);
+  }
+  .exp-card:hover::before { transform: scaleX(1); }
+  .exp-icon {
+    width: 52px; height: 52px;
+    background: var(--skylt); border: 1px solid var(--skylt2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 1.5rem;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .exp-title {
+    font-family: var(--condensed); font-size: 20px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .exp-body { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 1.25rem; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-tag {
+    font-size: 11px; font-weight: 700;
+    background: var(--skylt); border: 1px solid var(--skylt2);
+    color: var(--blue); padding: 3px 10px; letter-spacing: 0.05em;
+  }
+
+  /* ── FEATURE BAND ── */
+  .feature-band-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    padding: 6rem 2.5rem; max-width: 1200px; margin: 0 auto;
+  }
+  .feature-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .feature-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--sky);
+    transition: border-left-color 0.2s, background 0.2s;
+  }
+  .feature-item:hover { background: rgba(255,255,255,0.07); border-left-color: var(--white); }
+  .fi-icon { font-size: 22px; flex-shrink: 0; line-height: 1.4; }
+  .fi-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+  .fi-body { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+
+  .fband-right { display: flex; flex-direction: column; gap: 1rem; }
+  .fband-stat {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem; display: flex; align-items: center; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .fband-stat::after {
+    content: attr(data-bg); position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%);
+    font-family: var(--condensed); font-size: 5rem; font-weight: 900;
+    color: rgba(255,255,255,0.03); pointer-events: none;
+  }
+  .fstat-num {
+    font-family: var(--condensed); font-size: 3rem; font-weight: 900;
+    color: var(--sky); line-height: 1;
+  }
+  .fstat-unit { font-size: 1.5rem; color: var(--skylt2); }
+  .fstat-label { font-size: 14px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+  .fband-divider { display: flex; align-items: center; gap: 1rem; }
+  .fbd-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+  .fbd-diamond { width: 8px; height: 8px; background: var(--sky); transform: rotate(45deg); flex-shrink: 0; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .testi-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 2rem; position: relative;
+    transition: box-shadow 0.25s;
+  }
+  .testi-card:hover { box-shadow: 0 8px 32px rgba(26,86,219,0.08); }
+  .testi-card::before {
+    content: '"'; font-family: var(--condensed);
+    font-size: 5rem; font-weight: 900;
+    color: var(--skylt2); position: absolute;
+    top: 0.5rem; left: 1.25rem; line-height: 1;
+  }
+  .stars { color: var(--blue); font-size: 13px; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-quote {
+    font-size: 14px; color: var(--gray); line-height: 1.75;
+    margin-bottom: 1.5rem; font-style: italic;
+  }
+  .testi-sep { height: 1px; background: var(--border); margin-bottom: 1.25rem; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .tav {
+    width: 38px; height: 38px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--condensed); font-size: 13px; font-weight: 800; color: var(--white);
+  }
+  .tav1 { background: var(--blue); }
+  .tav2 { background: var(--navy); }
+  .tav3 { background: var(--sky); }
+  .tname { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .trole { font-size: 11px; color: var(--gray2); letter-spacing: 0.04em; }
+
+  /* ── INDUSTRIES ── */
+  .industries-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+  }
+  .ind-item {
+    background: var(--white); padding: 2rem 1.75rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ind-item:hover { background: var(--skylt); border-bottom-color: var(--blue); }
+  .ind-icon { font-size: 26px; margin-bottom: 0.75rem; }
+  .ind-name {
+    font-family: var(--condensed); font-size: 15px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--navy); margin-bottom: 0.3rem;
+  }
+  .ind-count { font-size: 12px; color: var(--gray2); }
+
+  /* ── CTA ── */
+  .cta-hero {
+    background: var(--navy); position: relative; overflow: hidden; padding: 6rem 0;
+  }
+  .cta-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(26,86,219,0.15) 0%, transparent 55%),
+      linear-gradient(315deg, rgba(59,130,246,0.08) 0%, transparent 55%);
+  }
+  .cta-hero::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky));
+  }
+  .cta-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 52px 52px;
+  }
+  .cta-inner {
+    position: relative; z-index: 1;
+    text-align: center; max-width: 760px; margin: 0 auto; padding: 0 2.5rem;
+  }
+  .cta-title {
+    font-family: var(--condensed); font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900; text-transform: uppercase;
+    line-height: 0.95; letter-spacing: -0.01em; color: var(--white); margin-bottom: 1.25rem;
+  }
+  .cta-title .ol { -webkit-text-stroke: 2px rgba(255,255,255,0.25); color: transparent; }
+  .cta-sub { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 520px; margin: 0 auto 2.5rem; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .cta-band {
+    background: linear-gradient(90deg, var(--navy), var(--blue2));
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .cta-band-text {
+    font-family: var(--condensed); font-size: 20px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--white);
+  }
+  .cta-band-sub { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 600; }
+  .cta-band-btn {
+    font-family: var(--condensed); font-size: 15px; font-weight: 800;
+    background: var(--white); color: var(--navy);
+    border: none; padding: 12px 28px; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s;
+  }
+  .cta-band-btn:hover { background: var(--skylt); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 4rem 2.5rem 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 2rem;
+  }
+  .footer-brand .logo { font-size: 28px; display: block; margin-bottom: 1rem; text-decoration: none; color: var(--white); }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 280px; }
+  .footer-col-title {
+    font-family: var(--condensed); font-size: 12px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--sky); margin-bottom: 1.25rem;
+  }
+  .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links-list a {
+    font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links-list a:hover { color: var(--white); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+  .footer-tagline {
+    font-family: var(--condensed); font-size: 13px; font-weight: 700;
+    color: rgba(255,255,255,0.15); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.22s; }
+  .d3 { animation-delay: 0.36s; } .d4 { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-panel { display: none; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .expertise-grid { grid-template-columns: 1fr 1fr; }
+    .industries-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .feature-band-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav .nav-links { display: none; }
+    nav .btn-ghost { display: none; }
+    .process-grid { grid-template-columns: 1fr; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .cta-band { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">TECHNO<span>BITE</span></a>
+    <ul class="nav-links">
+      <li><a href="#process">Process</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Sign In</a>
+      <a href="#" class="btn btn-primary">Find an Expert</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow fade-up d1">
+        <div class="eyebrow-line"></div>
+        Food Industry Expert Network
+      </div>
+      <h1 class="fade-up d2">
+        Where <span class="line-accent">Food Tech</span>
+        <span class="line-outline">Meets</span>
+        Expertise
+      </h1>
+      <p class="hero-desc fade-up d3">
+        Techno Bite connects food & beverage companies with 3,000+ verified specialists in extrusion technology, extraction processes, flavour science, and food engineering — precise matching, same-day turnaround.
+      </p>
+      <div class="hero-cta fade-up d4">
+        <a href="#" class="btn btn-primary btn-lg">Request an Expert</a>
+        <a href="#" class="btn btn-white btn-lg">Explore Network</a>
+      </div>
+      <div class="hero-metrics fade-up d4">
+        <div class="metric">
+          <div class="metric-num">3<span>k+</span></div>
+          <div class="metric-label">Vetted experts</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">18<span>hr</span></div>
+          <div class="metric-label">Avg. match time</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">40<span>+</span></div>
+          <div class="metric-label">Food niches</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-panel">
+        <div class="panel-header">
+          <span class="panel-title">Expert Network — Live</span>
+          <span class="live-dot">ONLINE</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel-stats">
+            <div class="pstat">
+              <div class="pstat-num">3<span class="u">k+</span></div>
+              <div class="pstat-label">Food Scientists</div>
+            </div>
+            <div class="pstat">
+              <div class="pstat-num">96<span class="u">%</span></div>
+              <div class="pstat-label">Match Rate</div>
+            </div>
+            <div class="pstat">
+              <div class="pstat-num">18<span class="u">hr</span></div>
+              <div class="pstat-label">Avg. Turnaround</div>
+            </div>
+            <div class="pstat">
+              <div class="pstat-num">40<span class="u">+</span></div>
+              <div class="pstat-label">Specialisms</div>
+            </div>
+          </div>
+          <div class="niches-label">Core specialisms</div>
+          <div class="niches">
+            <div class="niche-tag">Twin-screw Extrusion</div>
+            <div class="niche-tag">CO₂ Extraction</div>
+            <div class="niche-tag dark">Solvent Extraction</div>
+            <div class="niche-tag dark">F&B Formulation</div>
+            <div class="niche-tag">Protein Texturisation</div>
+            <div class="niche-tag">Flavour Science</div>
+            <div class="niche-tag dark">Cold Press</div>
+            <div class="niche-tag">Dairy Tech</div>
+          </div>
+        </div>
+        <div class="panel-cta-row">
+          <div>
+            <div class="pcta-text">Same-day turnaround</div>
+            <div class="pcta-sub">Urgent briefs matched within hours</div>
+          </div>
+          <button class="pcta-btn">Get Started →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="strip-label">Trusted by</div>
+    <div class="strip-logos">
+      <div class="strip-logo">Nestlé R&D</div>
+      <div class="strip-logo">ADM</div>
+      <div class="strip-logo">Givaudan</div>
+      <div class="strip-logo">Kerry Group</div>
+      <div class="strip-logo">Cargill</div>
+      <div class="strip-logo">IFF</div>
+      <div class="strip-logo">Symrise</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="section section-bg" id="process">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eye">Process</div>
+      <h2 class="section-title">Expert Access in Four Steps</h2>
+      <p class="section-sub">From brief to breakthrough insight — our structured process delivers the right food technology expert fast.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Submit your brief</div>
+        <p class="step-body">Describe your R&D challenge, production issue, or market question. Our team reads every brief before matching — no black-box algorithms.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-icon">🔬</div>
+        <div class="step-title">Expert shortlist</div>
+        <p class="step-body">Within hours, receive 3–5 curated specialist profiles with directly relevant extrusion, extraction, or F&B experience — not generic food scientists.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">Book your call</div>
+        <p class="step-body">Schedule a 60-minute consultation directly in our platform. We handle compliance, NDAs, and transcription automatically.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Insight delivered</div>
+        <p class="step-body">Walk away with actionable technical insights. Need more depth? Extend into project-based engagements or ongoing retainers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="section" id="expertise">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eye">Specialisms</div>
+      <h2 class="section-title">Deep Food Tech Expertise</h2>
+      <p class="section-sub">Our network covers every technical dimension of food manufacturing — from raw material processing to finished product formulation.</p>
+    </div>
+    <div class="expertise-grid">
+      <div class="exp-card">
+        <div class="exp-icon">⚙️</div>
+        <div class="exp-title">Extrusion Technology</div>
+        <p class="exp-body">Single and twin-screw extrusion experts covering snack production, pasta, textured proteins, pet food, and breakfast cereals. Deep process engineering and die design knowledge.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Twin-screw</span>
+          <span class="exp-tag">Die design</span>
+          <span class="exp-tag">Texturisation</span>
+          <span class="exp-tag">HME</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🌿</div>
+        <div class="exp-title">Extraction Processes</div>
+        <p class="exp-body">Specialists in CO₂ supercritical extraction, solvent extraction, cold press, and enzyme-assisted extraction for oils, flavours, botanicals, and active compounds.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Supercritical CO₂</span>
+          <span class="exp-tag">Solvent</span>
+          <span class="exp-tag">Cold press</span>
+          <span class="exp-tag">SFE</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🥤</div>
+        <div class="exp-title">Food & Beverage Formulation</div>
+        <p class="exp-body">Product developers and formulation chemists across beverages, functional foods, dairy alternatives, and clean-label product development.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Clean label</span>
+          <span class="exp-tag">Functional foods</span>
+          <span class="exp-tag">Shelf life</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🧬</div>
+        <div class="exp-title">Protein Science</div>
+        <p class="exp-body">Plant protein, precision fermentation, and alternative protein experts for the next generation of sustainable food manufacturing at commercial scale.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Plant protein</span>
+          <span class="exp-tag">Fermentation</span>
+          <span class="exp-tag">Isolates</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🏭</div>
+        <div class="exp-title">Process Engineering</div>
+        <p class="exp-body">Food plant design, GMP compliance, HACCP, scale-up engineering, and manufacturing optimisation for continuous and batch processing lines.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Scale-up</span>
+          <span class="exp-tag">HACCP</span>
+          <span class="exp-tag">GMP</span>
+          <span class="exp-tag">Lean</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🧪</div>
+        <div class="exp-title">Quality & Regulatory</div>
+        <p class="exp-body">Food safety, novel food regulation, ingredient compliance, and EU/FDA regulatory strategy experts for market authorisation and global food law.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Novel foods</span>
+          <span class="exp-tag">EU regulation</span>
+          <span class="exp-tag">FDA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BAND -->
+<div class="section-navy">
+  <div class="feature-band-inner">
+    <div class="fband-left">
+      <div class="section-eye light">Why Techno Bite</div>
+      <h2 class="section-title light">Built for Food Tech Teams</h2>
+      <p class="section-sub light">Every feature is engineered around the way R&D teams, food manufacturers, and ingredient suppliers actually need expert access.</p>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="fi-icon">🎯</div>
+          <div>
+            <div class="fi-title">Precision niche matching</div>
+            <p class="fi-body">We understand the difference between a twin-screw extrusion expert and a single-screw specialist. Our team matches at depth — not just industry level.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">⚡</div>
+          <div>
+            <div class="fi-title">18-hour guarantee</div>
+            <p class="fi-body">New product launches and production crises can't wait. Submit a brief and receive expert profiles within 18 hours — or we work free.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">🛡️</div>
+          <div>
+            <div class="fi-title">IP & compliance protection</div>
+            <p class="fi-body">Robust NDAs, conflict screening, and expert vetting protect your proprietary formulations and process IP throughout every engagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fband-right">
+      <div class="fband-stat" data-bg="3K">
+        <div>
+          <div class="fstat-num">3,000<span class="fstat-unit">+</span></div>
+          <div class="fstat-label">Verified food tech experts</div>
+        </div>
+      </div>
+      <div class="fband-divider"><div class="fbd-line"></div><div class="fbd-diamond"></div><div class="fbd-line"></div></div>
+      <div class="fband-stat" data-bg="18">
+        <div>
+          <div class="fstat-num">18<span class="fstat-unit">hr</span></div>
+          <div class="fstat-label">Average match time</div>
+        </div>
+      </div>
+      <div class="fband-divider"><div class="fbd-line"></div><div class="fbd-diamond"></div><div class="fbd-line"></div></div>
+      <div class="fband-stat" data-bg="96">
+        <div>
+          <div class="fstat-num">96<span class="fstat-unit">%</span></div>
+          <div class="fstat-label">Client satisfaction rate</div>
+        </div>
+      </div>
+      <div class="fband-divider"><div class="fbd-line"></div><div class="fbd-diamond"></div><div class="fbd-line"></div></div>
+      <div class="fband-stat" data-bg="40">
+        <div>
+          <div class="fstat-num">40<span class="fstat-unit">+</span></div>
+          <div class="fstat-label">Food industry sub-sectors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRIES -->
+<section class="section section-bg" id="industries">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eye">Industries</div>
+      <h2 class="section-title">Every Food Sector Covered</h2>
+    </div>
+    <div class="industries-grid">
+      <div class="ind-item"><div class="ind-icon">🌾</div><div class="ind-name">Cereals & Snacks</div><div class="ind-count">420+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🥛</div><div class="ind-name">Dairy & Alternatives</div><div class="ind-count">310+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🌿</div><div class="ind-name">Botanicals & Extracts</div><div class="ind-count">280+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🍖</div><div class="ind-name">Meat & Protein</div><div class="ind-count">350+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🫒</div><div class="ind-name">Oils & Fats</div><div class="ind-count">195+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🧃</div><div class="ind-name">Beverages</div><div class="ind-count">380+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🍫</div><div class="ind-name">Confectionery</div><div class="ind-count">220+ experts</div></div>
+      <div class="ind-item"><div class="ind-icon">🧬</div><div class="ind-name">Alt. Proteins</div><div class="ind-count">160+ experts</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eye">Client Voices</div>
+      <h2 class="section-title">Trusted by Food Tech Teams</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"We needed a twin-screw extrusion specialist for a textured plant protein project within 48 hours. Techno Bite delivered someone with exact experience on our specific extruder brand. Exceptional."</p>
+        <div class="testi-sep"></div>
+        <div class="testi-author">
+          <div class="tav tav1">DR</div>
+          <div><div class="tname">Dr. Rachel Okonkwo</div><div class="trole">Head of R&D, AlterProtein GmbH</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"For our supercritical CO₂ extraction scale-up, we couldn't find anyone in our network. Techno Bite found two qualified process engineers who had done exactly this at pilot and commercial scale."</p>
+        <div class="testi-sep"></div>
+        <div class="testi-author">
+          <div class="tav tav2">MC</div>
+          <div><div class="tname">Marco Cardenas</div><div class="trole">Process Director, NovaBotanicals</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"The compliance and IP vetting gives our legal team real confidence. Every expert we've spoken to has been a genuine practitioner — not retired academics. A game-changer for food R&D due diligence."</p>
+        <div class="testi-sep"></div>
+        <div class="testi-author">
+          <div class="tav tav3">SL</div>
+          <div><div class="tname">Sophie Lindström</div><div class="trole">VP Innovation, Nordik Foods</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-hero">
+  <div class="cta-grid-bg"></div>
+  <div class="cta-inner">
+    <div class="section-eye light" style="justify-content:center;">Ready?</div>
+    <h2 class="cta-title">
+      Find Your<br>
+      <span class="ol">Food Tech</span><br>
+      Expert Today
+    </h2>
+    <p class="cta-sub">Join innovative food manufacturers and ingredient companies who rely on Techno Bite for their most critical technical research.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn btn-primary btn-lg">Submit a Brief</a>
+      <a href="#" class="btn btn-white btn-lg">Talk to Our Team</a>
+    </div>
+  </div>
+</section>
+<div class="cta-band">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;max-width:1200px;">
+    <div>
+      <div class="cta-band-text">Join as a Food Tech Expert</div>
+      <div class="cta-band-sub">Share your knowledge. Earn on your schedule. Build your reputation.</div>
+    </div>
+    <button class="cta-band-btn">Apply to Our Network →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="about">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">TECHNO<span>BITE</span></a>
+        <p>The premier expert network for food industry professionals. Connecting food manufacturers, ingredient companies, and R&D teams with 3,000+ verified specialists in extrusion, extraction, and food & beverage technology.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links-list">
+          <li><a href="#">Find Experts</a></li>
+          <li><a href="#">Join Network</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Specialisms</div>
+        <ul class="footer-links-list">
+          <li><a href="#">Extrusion Technology</a></li>
+          <li><a href="#">Extraction Processes</a></li>
+          <li><a href="#">F&B Formulation</a></li>
+          <li><a href="#">Protein Science</a></li>
+          <li><a href="#">Food Regulatory</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links-list">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Compliance</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Techno Bite Ltd. All rights reserved.</div>
+      <div class="footer-tagline">Food Tech · Extrusion · Extraction · F&B</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
